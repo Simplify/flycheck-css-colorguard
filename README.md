@@ -1,8 +1,8 @@
 # flycheck-css-colorguard
 
-[![License GPL 3][https://img.shields.io/badge/license-GPL_3-green.svg?dummy]][https://github.com/Simplify/flycheck-css-colorguard/blob/master/COPYING]
+[![License GPL 3](https://img.shields.io/badge/license-GPL_3-green.svg?dummy)](https://github.com/Simplify/flycheck-css-colorguard/blob/master/COPYING)
 
-This is extension for [Flycheck][http://www.flycheck.org/].
+This is extension for [Flycheck](http://www.flycheck.org/).
 It uses [CSS Colorguard][https://github.com/SlexAxton/css-colorguard] and
 warns you when colors you've added are too similar to ones that already exist
 in your css file.
