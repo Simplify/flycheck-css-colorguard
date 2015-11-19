@@ -71,50 +71,10 @@
 ;;  line 52  col 5  #000000 collides with #020202                (2:59)
 ;;  line 52  col 5  #000000 collides with #010101                (20:20)
 
-;;;; CSS Colorguard output before 1.0.0:
-;; Collision: #000000, #020202
-;;   - rgba(0,0,0,1) (#000000) [line: 2, 3, 7, 12, 13, 16, 17, 52] is too close (0.3146196209793196) to #020202 (#020202) [line: 2]
-;; Collision: #000000, #010101
-;;   - rgba(0,0,0,1) (#000000) [line: 2, 3, 7, 12, 13, 16, 17, 52] is too close (0.15712369811016996) to #010101 (#010101) [line: 20]
-;; Collision: #020202, #010101
-;;   - #020202 (#020202) [line: 2] is too close (0.1574963682909058) to #010101 (#010101) [line: 20]
-
 
 ;;; Code:
 
 (require 'flycheck)
-
-;;;; For output before css-colorguard 1.0.0
-;; (defun flycheck-parse-css-colorguard (output checker buffer)
-;;   "Proces OUTPUT from colorguard into flycheck errors.
-;; CHECKER and BUFFER are returned with flycheck error."
-;;   (let (errors)
-;;     (dolist (line (delete "" (split-string output "Collision: ")))
-;;       (let ((good-part (nth 1 (split-string line " - "))))
-;;         (let ((first-color (car (split-string good-part " \\[Line: ")))
-;; 							(second-color (car (split-string (nth 1 (split-string good-part " to ")) " \\[Line: ")))
-;;               (line-numbers (car (split-string (nth 1 (split-string good-part " \\[Line: ")) "]")))
-;;               (second-line (car (split-string (nth 2 (split-string good-part " \\[Line: ")) "]")))
-;;               (collision (car (split-string (nth 1 (split-string good-part "]")) " to ")))
-;;               )
-;;           (dolist (error-line (split-string line-numbers ", "))
-;; 						(push (flycheck-error-new-at
-;; 									 (flycheck-string-to-number-safe error-line)
-;; 									 nil
-;; 									 'info
-;; 									 (format "%s is too close to %s at line %s" first-color second-color second-line)
-;; 									 :checker checker
-;; 									 :buffer buffer)
-;; 									errors)
-;; 						(push (flycheck-error-new-at
-;; 									 (flycheck-string-to-number-safe second-line)
-;; 									 nil
-;; 									 'info
-;; 									 (format "%s is too close to %s at line %s" second-color first-color error-line)
-;; 									 :checker checker
-;; 									 :buffer buffer)
-;; 									errors)))))
-;;     (nreverse errors)))
 
 (flycheck-define-checker css-colorguard
   "Detect similar colors in CSS using CSS Colorguard.
@@ -123,7 +83,6 @@ See URL
 `https://github.com/SlexAxton/css-colorguard'."
   :command ("colorguard" "--file" source)
   ;;(option "--threshold" "3")
-	;;  :error-parser flycheck-parse-css-colorguard ;; For css-colorguard older then 1.0.0
 	:error-patterns
 	((warning line-start
             "  line " line (one-or-more " ") " col " column (one-or-more " ") (message) line-end))
