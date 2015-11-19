@@ -33,8 +33,11 @@ You'll need to have flycheck installed.
 
 Just open any css file. If flycheck is properly configured, flycheck-css-colorguard will start automatically.
 
+### CSS Colorguard installation
+
 Make sure that you have CSS colorguard installed `npn install -g colorguard`.
-*Use CSS Colorguard version 1.0.0 or higher!*
+
+**Use CSS Colorguard version 1.0.0 or higher!**
 If you for some reason need to support CSS Colorguard older then 1.0.0, take oldest revision of
 `flycheck-css-colorguard.el` and uncomment `:error-parser` and comment
 `:error-patterns` code.
@@ -45,6 +48,8 @@ If you can't install CSS Colorguard globally or can't put executable in $PATH:
 (custom-set-variables
  '(flycheck-css-colorguard-executable "~/my_executables/colorguard"))')
 ```
+
+### CSS Colorguard options
 
 CSS Colorguard supports only two options: `--treshold <value from 0 to 100>`
 and `--options <your configuration in json file>`. You can set those in your `init.el`:
