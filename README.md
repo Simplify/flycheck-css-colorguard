@@ -3,15 +3,9 @@
 [![License GPL 3](https://img.shields.io/badge/license-GPL_3-green.svg?dummy)](https://github.com/Simplify/flycheck-css-colorguard/blob/master/COPYING)
 
 This is extension for [Flycheck](http://www.flycheck.org/).
-It uses [CSS Colorguard][https://github.com/SlexAxton/css-colorguard] and
+It uses [CSS Colorguard](https://github.com/SlexAxton/css-colorguard) and
 warns you when colors you've added are too similar to ones that already exist
 in your css file.
-
-*Use CSS Colorguard 1.0.0 or higher!*
-
-If you for some reason need to support CSS Colorguard older then 1.0.0, take oldest revision of
-`flycheck-css-colorguard.el` and uncomment `:error-parser` and comment
-`:error-patterns` code.
 
 ![flycheck-irony screenshot](screenshot-flycheck-css-colorguard.png)
 
@@ -40,6 +34,10 @@ You'll need to have flycheck installed.
 Just open any css file. If flycheck is properly configured, flycheck-css-colorguard will start automatically.
 
 Make sure that you have CSS colorguard installed `npn install -g colorguard`.
+*Use CSS Colorguard version 1.0.0 or higher!*
+If you for some reason need to support CSS Colorguard older then 1.0.0, take oldest revision of
+`flycheck-css-colorguard.el` and uncomment `:error-parser` and comment
+`:error-patterns` code.
 
 If you can't install CSS Colorguard globally or can't put executable in $PATH:
 
