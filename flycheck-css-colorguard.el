@@ -4,9 +4,10 @@
 
 ;; Author: Saša Jovanić <info@simplify.ba>
 ;; URL: https://github.com/simplify/flycheck-css-colorguard/
+;; Keywords: flycheck, CSS, Colorguard
 ;; Version: 0.1.0
-;; Keywords: flycheck, CSS
-;; Package-Requires: ((flycheck "0.22") (emacs "24.4"))
+;; Package-Version: 0.1.0
+;; Package-Requires: ((flycheck "0.22") (emacs "24"))
 
 ;; This file is not part of GNU Emacs.
 

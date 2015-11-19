@@ -9,24 +9,25 @@ in your css file.
 
 *Use CSS Colorguard 1.0.0 or higher!*
 
+If you for some reason need to support CSS Colorguard older then 1.0.0, take oldest revision of
+`flycheck-css-colorguard.el` and uncomment `:error-parser` and comment
+`:error-patterns` code.
+
 ![flycheck-irony screenshot](screenshot-flycheck-css-colorguard.png)
 
-## Instalation
+## Installation
 
-Package in available on [Melpa][https://melpa.org/].
+I'm working om Melpa...
 
-### [Cask][http://cask.readthedocs.org]
+### Manual install
 
-```cl
-(source gnu)
-(source melpa)
-
-(depends-on "flycheck-css-colorguard")
-```
-
-### `init.el`
+Untill Melpa is sorted out place flycheck-css-colorguard.el somewhere on your system and load it.
+You'll need to have flycheck installed.
 
 ```cl
+;; replace ~/Projects/elisp/flycheck-css-colorguard/ with your location.
+(add-to-list 'load-path "~/Projects/elisp/flycheck-css-colorguard/")
+(load-library "flycheck-css-colorguard")
 (eval-after-load 'flycheck
    '(progn
       (require 'flycheck-css-colorguard)
@@ -37,6 +38,7 @@ Package in available on [Melpa][https://melpa.org/].
 ## Usage
 
 Just open any css file. If flycheck is properly configured, flycheck-css-colorguard will start automatically.
+
 
 ## License
 
