@@ -77,13 +77,29 @@
 
 (require 'flycheck)
 
+(flycheck-def-config-file-var flycheck-css-colorguard-config css-colorguard nil
+	:safe #'stringp
+	:package-version '(flycheck . "0.22"))
+
+(flycheck-def-option-var flycheck-css-colorguard-threshold nil css-colorguard
+	  "CSS Colorguard threshold.
+
+From 0 to 100. The default value is 3.
+  Examples:
+    --threshold=6"
+		:type '(string :tag "Threshold")
+		:safe #'stringp
+		:package-version '(flycheck . "0.22"))
+
 (flycheck-define-checker css-colorguard
   "Detect similar colors in CSS using CSS Colorguard.
 
 See URL
 `https://github.com/SlexAxton/css-colorguard'."
-  :command ("colorguard" "--file" source)
-  ;;(option "--threshold" "3")
+  :command ("colorguard"
+						(config-file "--options" flycheck-css-colorguard-config)
+						(option "--threshold" flycheck-css-colorguard-threshold)
+						"--file" source)
 	:error-patterns
 	((warning line-start
             "  line " line (one-or-more " ") " col " column (one-or-more " ") (message) line-end))

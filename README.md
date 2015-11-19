@@ -17,7 +17,7 @@ If you for some reason need to support CSS Colorguard older then 1.0.0, take old
 
 ## Installation
 
-I'm working om Melpa...
+I'm working om Melpa package...
 
 ### Manual install
 
@@ -25,7 +25,7 @@ Untill Melpa is sorted out place flycheck-css-colorguard.el somewhere on your sy
 You'll need to have flycheck installed.
 
 ```cl
-;; replace ~/Projects/elisp/flycheck-css-colorguard/ with your location.
+;; Replace ~/Projects/elisp/flycheck-css-colorguard/ with your location.
 (add-to-list 'load-path "~/Projects/elisp/flycheck-css-colorguard/")
 (load-library "flycheck-css-colorguard")
 (eval-after-load 'flycheck
@@ -39,6 +39,30 @@ You'll need to have flycheck installed.
 
 Just open any css file. If flycheck is properly configured, flycheck-css-colorguard will start automatically.
 
+Make sure that you have CSS colorguard installed `npn install -g colorguard`.
+
+If you can't install CSS Colorguard globally or can't put executable in $PATH:
+
+```cl
+(custom-set-variables
+ '(flycheck-css-colorguard-executable "~/my_executables/colorguard"))')
+```
+
+CSS Colorguard supports only two options: `--treshold <value from 0 to 100>`
+and `--options <your configuration in json file>`. You can set those in your `init.el`:
+
+```cl
+(custom-set-variables
+ '(flycheck-css-colorguard-threshold "5"))
+```
+
+If you set `--options` config file, CSS Colorguard will ignore `--threshold`,
+so there is no point for setting both of those.
+
+```cl
+(custom-set-variables
+ '(flycheck-css-colorguard-config "config.json"))
+```
 
 ## License
 
