@@ -33,7 +33,7 @@
 ;; CSS Colorguard helps you maintain the color set that you want, and warns
 ;; you when colors you've added are too similar to ones that already exist.
 
-;; For more infomations about CSS Colorguard, please check the GitHub
+;; For more information about CSS Colorguard, please check the GitHub
 ;; https://github.com/SlexAxton/css-colorguard
 
 ;; For more information about Flycheck:
