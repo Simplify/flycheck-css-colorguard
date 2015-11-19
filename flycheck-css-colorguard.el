@@ -3,7 +3,7 @@
 ;; Copyright (C) 2015 Saša Jovanić
 
 ;; Author: Saša Jovanić <info@simplify.ba>
-;; URL: https://github.com/simplify/flycheck-css-colorguard/
+;; URL: https://github.com/Simplify/flycheck-css-colorguard/
 ;; Keywords: flycheck, CSS, Colorguard
 ;; Version: 0.1.0
 ;; Package-Version: 0.1.0
@@ -41,7 +41,7 @@
 ;; https://github.com/flycheck/flycheck
 
 ;; For more information about this Flycheck extension:
-;; https://github.com/simplify/flycheck-css-colorguard
+;; https://github.com/Simplify/flycheck-css-colorguard
 
 
 ;;;; Setup

@@ -1,6 +1,6 @@
 # flycheck-css-colorguard
 
-[![License GPL 3][https://img.shields.io/badge/license-GPL_3-green.svg?dummy]][https://github.com/simplify/flycheck-css-colorguard/blob/master/COPYING]
+[![License GPL 3][https://img.shields.io/badge/license-GPL_3-green.svg?dummy]][https://github.com/Simplify/flycheck-css-colorguard/blob/master/COPYING]
 
 This is extension for [Flycheck][http://www.flycheck.org/].
 It uses [CSS Colorguard][https://github.com/SlexAxton/css-colorguard] and
