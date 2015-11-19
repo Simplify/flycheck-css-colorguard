@@ -35,7 +35,7 @@ Just open any css file. If flycheck is properly configured, flycheck-css-colorgu
 
 ### CSS Colorguard installation
 
-Make sure that you have CSS colorguard installed `npn install -g colorguard`.
+Make sure that you have CSS colorguard installed `npm install -g colorguard`.
 
 **Use CSS Colorguard version 1.0.0 or higher!**
 If you for some reason need to support CSS Colorguard older then 1.0.0, take oldest revision of
