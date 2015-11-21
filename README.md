@@ -12,7 +12,28 @@ in your css file.
 
 ## Installation
 
-I'm working om Melpa package...
+### Melpa
+
+Package in available on [Melpa](https://melpa.org/).
+
+#### `init.el`
+
+```cl
+(eval-after-load 'flycheck
+   '(progn
+      (require 'flycheck-css-colorguard)
+      (flycheck-add-next-checker 'css-csslint
+                                 'css-colorguard 'append)))
+```
+
+#### [Cask](http://cask.readthedocs.org)
+
+```cl
+(source gnu)
+(source melpa)
+
+(depends-on "flycheck-css-colorguard")
+```
 
 ### Manual install
 
