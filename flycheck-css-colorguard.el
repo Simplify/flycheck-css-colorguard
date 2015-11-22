@@ -5,8 +5,8 @@
 ;; Author: Saša Jovanić <info@simplify.ba>
 ;; URL: https://github.com/Simplify/flycheck-css-colorguard/
 ;; Keywords: flycheck, CSS, Colorguard
-;; Version: 0.1.0
-;; Package-Version: 0.1.0
+;; Version: 0.20.0
+;; Package-Version: 0.20.0
 ;; Package-Requires: ((flycheck "0.22") (emacs "24"))
 
 ;; This file is not part of GNU Emacs.
@@ -46,31 +46,15 @@
 
 ;;;; Setup
 
+;; Install CSS Colorguard:
+;; npm install -g colorguard
+
+;; Add following to your Emacs init.el file:
 ;; (eval-after-load 'flycheck
 ;;   '(progn
 ;;      (require 'flycheck-css-colorguard)
 ;;      (flycheck-add-next-checker 'css-csslint
 ;;                                 'css-colorguard 'append)))
-
-
-;;;; CSS Colorguard output 1.0.0 or higher:
-;;  line 2   col 3  #020202 collides with rgba(0,0,0,1)          (2:44)
-;;  line 3   col 3  #000000 collides with rgba(0,0,0,1)          (2:44)
-;;  line 3   col 3  #000000 collides with #020202                (2:59)
-;;  line 7   col 3  black collides with rgba(0,0,0,1)            (2:44)
-;;  line 7   col 3  black collides with #020202                  (2:59)
-;;  line 12  col 3  rgb(0,0,0) collides with rgba(0,0,0,1)       (2:44)
-;;  line 12  col 3  rgb(0,0,0) collides with #020202             (2:59)
-;;  line 13  col 3  rgba(0,0,0,1) collides with #020202          (2:59)
-;;  line 16  col 3  hsl(0,0%,0%) collides with rgba(0,0,0,1)     (2:44)
-;;  line 16  col 3  hsl(0,0%,0%) collides with #020202           (2:59)
-;;  line 17  col 3  hsla(0,0%,0%,1) collides with rgba(0,0,0,1)  (2:44)
-;;  line 17  col 3  hsla(0,0%,0%,1) collides with #020202        (2:59)
-;;  line 20  col 3  #010101 collides with rgba(0,0,0,1)          (2:44)
-;;  line 20  col 3  #010101 collides with #020202                (2:59)
-;;  line 52  col 5  #000000 collides with rgba(0,0,0,1)          (2:44)
-;;  line 52  col 5  #000000 collides with #020202                (2:59)
-;;  line 52  col 5  #000000 collides with #010101                (20:20)
 
 
 ;;; Code:
@@ -91,6 +75,25 @@ From 0 to 100. The default value is 3.
 		:safe #'stringp
 		:package-version '(flycheck . "0.22"))
 
+;;; CSS Colorguard output 1.0.0 or higher:
+;;  line 2   col 3  #020202 collides with rgba(0,0,0,1)          (2:44)
+;;  line 3   col 3  #000000 collides with rgba(0,0,0,1)          (2:44)
+;;  line 3   col 3  #000000 collides with #020202                (2:59)
+;;  line 7   col 3  black collides with rgba(0,0,0,1)            (2:44)
+;;  line 7   col 3  black collides with #020202                  (2:59)
+;;  line 12  col 3  rgb(0,0,0) collides with rgba(0,0,0,1)       (2:44)
+;;  line 12  col 3  rgb(0,0,0) collides with #020202             (2:59)
+;;  line 13  col 3  rgba(0,0,0,1) collides with #020202          (2:59)
+;;  line 16  col 3  hsl(0,0%,0%) collides with rgba(0,0,0,1)     (2:44)
+;;  line 16  col 3  hsl(0,0%,0%) collides with #020202           (2:59)
+;;  line 17  col 3  hsla(0,0%,0%,1) collides with rgba(0,0,0,1)  (2:44)
+;;  line 17  col 3  hsla(0,0%,0%,1) collides with #020202        (2:59)
+;;  line 20  col 3  #010101 collides with rgba(0,0,0,1)          (2:44)
+;;  line 20  col 3  #010101 collides with #020202                (2:59)
+;;  line 52  col 5  #000000 collides with rgba(0,0,0,1)          (2:44)
+;;  line 52  col 5  #000000 collides with #020202                (2:59)
+;;  line 52  col 5  #000000 collides with #010101                (20:20)
+
 (flycheck-define-checker css-colorguard
   "Detect similar colors in CSS using CSS Colorguard.
 
@@ -103,6 +106,10 @@ See URL
 	:error-patterns
 	((warning line-start
             "  line " line (one-or-more " ") " col " column (one-or-more " ") (message) line-end))
+	:error-filter
+	(lambda (errors)
+		(flycheck-collapse-error-message-whitespace
+		 (flycheck-sanitize-errors errors)))
   :modes (css-mode))
 
 (add-to-list 'flycheck-checkers 'css-colorguard 'append)
