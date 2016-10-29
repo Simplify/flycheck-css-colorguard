@@ -20,10 +20,7 @@ Package in available on [Melpa](https://melpa.org/).
 
 ```cl
 (eval-after-load 'flycheck
-   '(progn
-      (require 'flycheck-css-colorguard)
-      (flycheck-add-next-checker 'css-csslint
-                                 'css-colorguard 'append)))
+  '(add-hook 'flycheck-mode-hook #'flycheck-css-colorguard-setup))
 ```
 
 #### [Cask](http://cask.readthedocs.org)
@@ -45,10 +42,7 @@ You'll need to have flycheck installed.
 (add-to-list 'load-path "~/Projects/elisp/flycheck-css-colorguard/")
 (load-library "flycheck-css-colorguard")
 (eval-after-load 'flycheck
-   '(progn
-      (require 'flycheck-css-colorguard)
-      (flycheck-add-next-checker 'css-csslint
-                                 'css-colorguard 'append)))
+  '(add-hook 'flycheck-mode-hook #'flycheck-css-colorguard-setup))
 ```
 
 ## Usage
