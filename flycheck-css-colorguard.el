@@ -112,7 +112,12 @@ See URL
      (flycheck-sanitize-errors errors)))
   :modes (css-mode))
 
-(add-to-list 'flycheck-checkers 'css-colorguard 'append)
+;;;###autoload
+(defun flycheck-css-colorguard-setup ()
+  "Setup Flycheck CSS Colorguard.
+Add `css-colorguard' to `flycheck-checkers'."
+  (interactive)
+  (add-to-list 'flycheck-checkers 'css-colorguard 'append))
 
 (provide 'flycheck-css-colorguard)
 ;;; flycheck-css-colorguard.el ends here
